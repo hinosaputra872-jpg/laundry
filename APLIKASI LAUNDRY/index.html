@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Laundry Manager</title>
+  
+  <!-- Tailwind CSS v4 Browser Build -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons (for modern UI icons) -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="bg-slate-900 text-slate-100 font-['Outfit'] min-h-screen selection:bg-indigo-500/30">
+  <!-- Background Elements for Premium Look -->
+  <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-indigo-600/20 blur-[120px]"></div>
+    <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-purple-600/20 blur-[120px]"></div>
+  </div>
+
+  <div class="container mx-auto px-4 py-8 max-w-6xl">
+    <!-- Header -->
+    <header class="flex flex-col md:flex-row items-center justify-between mb-12 gap-6">
+      <div class="flex items-center gap-3">
+        <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg shadow-indigo-500/30">
+          <i class="ph ph-drop text-2xl text-white"></i>
+        </div>
+        <div>
+          <h1 class="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-400">
+            LuxeLaundry
+          </h1>
+          <p class="text-slate-400 text-sm">Premium Management System</p>
+        </div>
+      </div>
+      
+      <div class="flex items-center gap-4">
+        <!-- Stats -->
+        <div class="glass-panel px-4 py-2 rounded-lg flex items-center gap-3">
+          <div class="text-slate-400 text-sm">Total Orders:</div>
+          <div id="totalOrdersStat" class="font-bold text-indigo-400">0</div>
+        </div>
+        <button id="settingsBtn" class="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 hover:bg-white/10 text-slate-300 transition-colors border border-white/10" title="Pricing Settings">
+          <i class="ph ph-gear text-xl"></i>
+        </button>
+        <button id="addOrderBtn" class="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25 flex items-center gap-2 transform hover:-translate-y-0.5">
+          <i class="ph ph-plus-circle text-lg"></i>
+          New Order
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+      <!-- Sidebar / Filters -->
+      <aside class="lg:col-span-1 space-y-6">
+        <div class="glass-panel rounded-2xl p-6">
+          <h2 class="text-xl font-semibold mb-4 flex items-center gap-2">
+            <i class="ph ph-funnel text-indigo-400"></i>
+            Filters
+          </h2>
+          <div class="space-y-2">
+            <button class="filter-btn active w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors" data-filter="all">All Orders</button>
+            <button class="filter-btn w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-400 hover:text-slate-200 hover:bg-white/5" data-filter="Pending">Pending</button>
+            <button class="filter-btn w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-400 hover:text-slate-200 hover:bg-white/5" data-filter="Processing">Processing</button>
+            <button class="filter-btn w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium transition-colors text-slate-400 hover:text-slate-200 hover:bg-white/5" data-filter="Completed">Completed</button>
+          </div>
+        </div>
+
+        <div class="glass-panel rounded-2xl p-6">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-xl font-semibold flex items-center gap-2">
+              <i class="ph ph-chart-line-up text-purple-400"></i>
+              Revenue
+            </h2>
+            <div class="relative">
+              <select id="revenueFilter" class="bg-slate-800/80 border border-white/10 rounded-lg pl-3 pr-8 py-1.5 text-xs text-slate-300 focus:outline-none focus:border-indigo-500 appearance-none transition-colors cursor-pointer">
+                <option value="today">Hari Ini</option>
+                <option value="month">Bulan Ini</option>
+                <option value="year">Tahun Ini</option>
+                <option value="all" selected>Semua</option>
+              </select>
+              <i class="ph ph-caret-down absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none text-xs"></i>
+            </div>
+          </div>
+          <div class="text-3xl font-bold text-white mb-1" id="totalRevenueStat">Rp 0</div>
+          <div class="text-sm text-slate-400">Total estimated income</div>
+        </div>
+      </aside>
+
+      <!-- Order List -->
+      <section class="lg:col-span-3">
+        <div class="glass-panel rounded-2xl p-6 min-h-[500px]">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-xl font-semibold">Recent Orders</h2>
+            <!-- Search -->
+            <div class="relative">
+              <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input type="text" id="searchInput" placeholder="Search customer..." class="bg-white/5 border border-white/10 rounded-lg pl-10 pr-4 py-2 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all w-64 placeholder-slate-500 text-slate-200">
+            </div>
+          </div>
+          
+          <div id="emptyState" class="hidden flex-col items-center justify-center py-16 text-center">
+            <div class="w-24 h-24 bg-white/5 rounded-full flex items-center justify-center mb-4">
+              <i class="ph ph-basket text-4xl text-slate-500"></i>
+            </div>
+            <h3 class="text-lg font-medium text-slate-300 mb-2">No orders found</h3>
+            <p class="text-slate-500 text-sm max-w-sm">You haven't created any laundry orders yet, or no orders match your search.</p>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="w-full text-left" id="ordersTable">
+              <thead>
+                <tr class="text-slate-400 text-sm border-b border-white/10">
+                  <th class="pb-3 font-medium px-4">Order ID</th>
+                  <th class="pb-3 font-medium px-4">Customer</th>
+                  <th class="pb-3 font-medium px-4">Service</th>
+                  <th class="pb-3 font-medium px-4">Weight</th>
+                  <th class="pb-3 font-medium px-4">Total Price</th>
+                  <th class="pb-3 font-medium px-4">Status</th>
+                  <th class="pb-3 font-medium text-right px-4">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersList" class="divide-y divide-white/5">
+                <!-- Orders will be injected here via JS -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Modal Backdrop -->
+  <div id="modalBackdrop" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"></div>
+
+  <!-- Order Modal Form -->
+  <div id="orderModal" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-md hidden opacity-0 scale-95 transition-all duration-300">
+    <div class="glass-panel rounded-2xl p-6 shadow-2xl border border-white/10">
+      <div class="flex items-center justify-between mb-6">
+        <h2 id="modalTitle" class="text-xl font-bold">Add New Order</h2>
+        <button id="closeModalBtn" class="text-slate-400 hover:text-white transition-colors">
+          <i class="ph ph-x text-xl"></i>
+        </button>
+      </div>
+
+      <form id="orderForm" class="space-y-4">
+        <input type="hidden" id="orderId">
+        
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1.5">Customer Name</label>
+          <input type="text" id="customerName" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white placeholder-slate-500" placeholder="e.g. John Doe">
+        </div>
+        
+        <div class="grid grid-cols-2 gap-4">
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-1.5">Service Type</label>
+            <div class="relative">
+              <select id="serviceType" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white appearance-none">
+                <option value="Wash & Fold">Wash & Fold</option>
+                <option value="Dry Clean">Dry Clean</option>
+                <option value="Ironing Only">Ironing Only</option>
+                <option value="Premium Wash">Premium Wash</option>
+              </select>
+              <i class="ph ph-caret-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+            </div>
+          </div>
+          
+          <div>
+            <label class="block text-sm font-medium text-slate-300 mb-1.5">Weight (Kg)</label>
+            <input type="number" id="weight" step="0.1" min="0.1" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white placeholder-slate-500" placeholder="0.0">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1.5">Status</label>
+          <div class="relative">
+            <select id="status" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white appearance-none">
+              <option value="Pending">Pending</option>
+              <option value="Processing">Processing</option>
+              <option value="Completed">Completed</option>
+            </select>
+            <i class="ph ph-caret-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 pointer-events-none"></i>
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-white/10 flex justify-end gap-3">
+          <button type="button" id="cancelBtn" class="px-5 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors">Cancel</button>
+          <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25">Save Order</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Settings Modal Form -->
+  <div id="settingsModal" class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 w-full max-w-sm hidden opacity-0 scale-95 transition-all duration-300">
+    <div class="glass-panel rounded-2xl p-6 shadow-2xl border border-white/10">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-xl font-bold">Pricing Settings</h2>
+        <button id="closeSettingsBtn" class="text-slate-400 hover:text-white transition-colors">
+          <i class="ph ph-x text-xl"></i>
+        </button>
+      </div>
+
+      <form id="settingsForm" class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1.5">Wash & Fold (Rp/Kg)</label>
+          <input type="number" id="priceWashFold" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1.5">Dry Clean (Rp/Kg)</label>
+          <input type="number" id="priceDryClean" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1.5">Ironing Only (Rp/Kg)</label>
+          <input type="number" id="priceIroning" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white">
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1.5">Premium Wash (Rp/Kg)</label>
+          <input type="number" id="pricePremium" required class="w-full bg-slate-800/50 border border-white/10 rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all text-white">
+        </div>
+
+        <div class="pt-4 border-t border-white/10 flex justify-end gap-3">
+          <button type="button" id="cancelSettingsBtn" class="px-5 py-2.5 rounded-lg text-sm font-medium text-slate-300 hover:text-white hover:bg-white/5 transition-colors">Cancel</button>
+          <button type="submit" class="bg-indigo-500 hover:bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25">Save Prices</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Print Section (Hidden by default) -->
+  <div id="printSection" class="hidden font-sans bg-white text-black p-8 max-w-sm mx-auto border border-gray-200">
+    <!-- Populated dynamically via JS -->
+  </div>
+
+  <script src="./main.js"></script>
+</body>
+</html>
